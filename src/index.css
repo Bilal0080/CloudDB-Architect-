@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;650;700&family=JetBrains+Mono:wght@400;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #0A0A0B;
+  color: #e2e8f0;
+}
+
+/* Custom Scrollbars */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #0E0E10;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Highlight layouts */
+.sticky-hover {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sticky-hover:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 10px 25px -5px rgba(255, 255, 255, 0.05);
+}
+
+/* Print CSS Overrides for Exporting Beautiful PDFs */
+@media print {
+  html, body {
+    background-color: #ffffff !important;
+    background: #ffffff !important;
+    color: #0f172a !important;
+    font-size: 10pt !important;
+    line-height: 1.4 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Force browsers to print exact background colors/accents */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Prevent automatic headers/footers overlapping design if custom ones are used */
+  @page {
+    size: A4 portrait;
+    margin: 15mm 15mm 15mm 15mm;
+  }
+
+  /* Suppress screen-only app modules */
+  header,
+  main,
+  footer,
+  form,
+  aside,
+  button,
+  .print-hide {
+    display: none !important;
+  }
+
+  /* Force display of our printable canvas component */
+  #print-layout {
+    display: block !important;
+    visibility: visible !important;
+    background: #ffffff !important;
+    color: #0f172a !important;
+    padding: 0 !important;
+  }
+
+  /* Specific structure format for paper/PDF */
+  .pdf-section {
+    page-break-inside: avoid !important;
+    margin-bottom: 24px !important;
+    border-bottom: 1px solid #e2e8f0 !important;
+    padding-bottom: 16px !important;
+  }
+
+  .pdf-code-block {
+    font-family: "JetBrains Mono", ui-monospace, monospace !important;
+    font-size: 8pt !important;
+    background-color: #f8fafc !important;
+    border: 1px solid #e2e8f0 !important;
+    color: #0f172a !important;
+    padding: 10px !important;
+    white-space: pre-wrap !important;
+    border-radius: 6px !important;
+  }
+}
+
